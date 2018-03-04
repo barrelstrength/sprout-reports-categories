@@ -23,7 +23,7 @@ class SproutReportsCategories extends Plugin
         parent::init();
 
         Event::on(DataSources::class, DataSources::EVENT_REGISTER_DATA_SOURCES, function(RegisterComponentTypesEvent $event) {
-            $event->types[] = new Categories();
+            $event->types[] = Categories::class;
         });
     }
 }
