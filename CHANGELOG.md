@@ -1,0 +1,2 @@
+# Sprout Reports Categories Changelog
+
