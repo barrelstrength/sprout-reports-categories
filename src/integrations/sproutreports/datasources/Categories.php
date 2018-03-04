@@ -120,7 +120,7 @@ class Categories extends BaseDataSource
             $setupRequiredMessage = Craft::t('sprout-reports-categories', 'This report requires a Channel or Structure section using Categories. Please update your settings to include at least one Channel or Structure and at least one Category Group with Categories available to assign to that section.');
         }
 
-        return Craft::$app->getView()->renderTemplate('sprout-reports/datasources/_settings/categories', [
+        return Craft::$app->getView()->renderTemplate('sprout-reports-categories/datasources/_settings/categories', [
             'settings' => count($settings) ? $settings : $this->report->getSettings(),
             'sectionSettings' => $sectionSettings,
             'categoryGroupSettings' => $categoryGroupSettings,
