@@ -12,7 +12,7 @@
         label: "Section"|t('sprout-reports-categories'),
         instructions: "Section for which you want to report category usage"|t('sprout-reports-categories'),
         name: 'settings[sectionId]',
-        settings: sectionSettings,
+        options: sectionSettings,
         value: settings.sectionId is defined ? settings.sectionId : null,
         errors: errors['sectionId'] is defined ? errors['sectionId'] : null,
         first: true
@@ -22,7 +22,7 @@
         label: "Category Group"|t('sprout-reports-categories'),
         instructions: "Category group for which you want report category usage"|t('sprout-reports-categories'),
         name: 'settings[categoryGroupId]',
-        settings: categoryGroupSettings,
+        options: categoryGroupSettings,
         value: settings.categoryGroupId is defined ? settings.categoryGroupId : null,
         errors: errors['categoryGroupId'] is defined ? errors['categoryGroupId'] : null
     }) }}

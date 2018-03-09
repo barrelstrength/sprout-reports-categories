@@ -37,8 +37,8 @@ class Categories extends BaseDataSource
     {
         $reportSettings = $report->getSettings();
 
-        $sectionId = $reportSettings->sectionId;
-        $categoryGroupId = $reportSettings->categoryGroupId;
+        $sectionId = $reportSettings['sectionId'];
+        $categoryGroupId = $reportSettings['categoryGroupId'];
 
         $categoryQuery = CategoryRecord::find()
             ->where(['groupId' => $categoryGroupId])
@@ -57,7 +57,7 @@ class Categories extends BaseDataSource
         $query = new Query();
         $totalCategories = $query
             ->select('COUNT(*)')
-            ->from('relations')
+            ->from('{{%relations}} relations')
             ->where(['in', 'relations.sourceId', $entryIds])
             ->andWhere(['in', 'relations.targetId', $categoryIds])
             ->scalar();
@@ -68,9 +68,9 @@ class Categories extends BaseDataSource
             COUNT(relations.sourceId) AS 'Total Entries Assigned Category',
                                 (COUNT(relations.sourceId) / $totalCategories) * 100 AS '% of Total Categories used'
             ")
-            ->from('content')
-            ->join('LEFT JOIN', 'categories', 'content.elementId = categories.id')
-            ->join('LEFT JOIN', 'relations', 'relations.targetId = categories.id')
+            ->from('{{%content}} content')
+            ->join('LEFT JOIN', '{{%categories}} categories', 'content.elementId = categories.id')
+            ->join('LEFT JOIN', '{{%relations}} relations', 'relations.targetId = categories.id')
             ->where(['in', 'relations.sourceId', $entryIds])
             ->andWhere(['in', 'relations.targetId', $categoryIds])
             ->groupBy('relations.targetId')
@@ -147,10 +147,6 @@ class Categories extends BaseDataSource
             $errors['categoryGroupId'][] = Craft::t('sprout-reports-categories', 'Category Group is required.');
         }
 
-        if (count($errors) > 0) {
-            return false;
-        }
-
-        return true;
+        return !(count($errors) > 0);
     }
 }
