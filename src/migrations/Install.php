@@ -23,8 +23,9 @@ class Install extends Migration
         $migration->safeUp();
         ob_end_clean();
 
-        $oldDataSourceId = 'sproutreports.categories';
+        /** @noinspection ClassConstantCanBeUsedInspection */
         $dataSourceClass = 'barrelstrength\sproutreportscategories\integrations\sproutreports\datasources\Categories';
+        $oldDataSourceId = 'sproutreports.categories';
 
         $query = new Query();
 
