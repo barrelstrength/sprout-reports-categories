@@ -4,6 +4,7 @@ namespace barrelstrength\sproutreportscategories\integrations\sproutreports\data
 
 use barrelstrength\sproutbase\contracts\sproutreports\BaseDataSource;
 use barrelstrength\sproutbase\models\sproutreports\Report as ReportModel;
+use barrelstrength\sproutreports\elements\Report;
 use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
@@ -33,7 +34,7 @@ class Categories extends BaseDataSource
      *
      * @return array
      */
-    public function getResults(ReportModel $report, array $settings = [])
+    public function getResults(Report $report, array $settings = [])
     {
         $reportSettings = $report->getSettings();
 
@@ -64,16 +65,16 @@ class Categories extends BaseDataSource
 
         $query = new Query();
         $entries = $query
-            ->select("(content.title) AS 'Category Name',
+            ->select("content.title AS 'Category Name',
             COUNT(relations.sourceId) AS 'Total Entries Assigned Category',
-                                (COUNT(relations.sourceId) / $totalCategories) * 100 AS '% of Total Categories used'
+            (COUNT(relations.sourceId) / $totalCategories) * 100 AS '% of Total Categories used'
             ")
             ->from('{{%content}} content')
-            ->join('LEFT JOIN', '{{%categories}} categories', 'content.elementId = categories.id')
-            ->join('LEFT JOIN', '{{%relations}} relations', 'relations.targetId = categories.id')
+            ->leftJoin('{{%categories}} categories', 'content.elementId = categories.id')
+            ->leftJoin('{{%relations}} relations', 'relations.targetId = categories.id')
             ->where(['in', 'relations.sourceId', $entryIds])
             ->andWhere(['in', 'relations.targetId', $categoryIds])
-            ->groupBy('relations.targetId')
+            ->groupBy(['relations.targetId'])
             ->all();
 
         return $entries;
