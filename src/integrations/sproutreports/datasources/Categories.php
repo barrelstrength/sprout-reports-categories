@@ -3,8 +3,7 @@
 namespace barrelstrength\sproutreportscategories\integrations\sproutreports\datasources;
 
 use barrelstrength\sproutbase\contracts\sproutreports\BaseDataSource;
-use barrelstrength\sproutbase\models\sproutreports\Report as ReportModel;
-use barrelstrength\sproutreports\elements\Report;
+use barrelstrength\sproutbase\elements\sproutreports\Report;
 use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
@@ -29,7 +28,7 @@ class Categories extends BaseDataSource
     }
 
     /**
-     * @param ReportModel $report
+     * @param Report $report
      * @param array       $settings
      *
      * @return array
@@ -92,7 +91,7 @@ class Categories extends BaseDataSource
         $sectionSettings = [];
         $categoryGroupSettings = [];
 
-        $sections = \Craft::$app->getSections()->getAllSections();
+        $sections = Craft::$app->getSections()->getAllSections();
 
         foreach ($sections as $section) {
             if ($section->type != 'single') {
@@ -103,7 +102,7 @@ class Categories extends BaseDataSource
             }
         }
 
-        $categoryGroups = \Craft::$app->getCategories()->getAllGroups();
+        $categoryGroups = Craft::$app->getCategories()->getAllGroups();
 
         foreach ($categoryGroups as $categoryGroup) {
             $categoryGroupSettings[] = [
