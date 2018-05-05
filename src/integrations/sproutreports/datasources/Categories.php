@@ -2,8 +2,8 @@
 
 namespace barrelstrength\sproutreportscategories\integrations\sproutreports\datasources;
 
-use barrelstrength\sproutbase\contracts\sproutreports\BaseDataSource;
-use barrelstrength\sproutbase\elements\sproutreports\Report;
+use barrelstrength\sproutbase\sproutreports\contracts\BaseDataSource;
+use barrelstrength\sproutbase\sproutreports\elements\Report;
 use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
