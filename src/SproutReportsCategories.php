@@ -18,6 +18,11 @@ use craft\events\RegisterComponentTypesEvent;
 
 class SproutReportsCategories extends Plugin
 {
+    /**
+     * @var string
+     */
+    public $schemaVersion = '1.0.0';
+
     public function init()
     {
         parent::init();

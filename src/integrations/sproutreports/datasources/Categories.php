@@ -2,14 +2,14 @@
 
 namespace barrelstrength\sproutreportscategories\integrations\sproutreports\datasources;
 
-use barrelstrength\sproutbase\app\reports\contracts\BaseDataSource;
+use barrelstrength\sproutbase\app\reports\base\DataSource;
 use barrelstrength\sproutbase\app\reports\elements\Report;
 use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
 use Craft;
 
-class Categories extends BaseDataSource
+class Categories extends DataSource
 {
     /**
      * @return string
@@ -120,7 +120,7 @@ class Categories extends BaseDataSource
             $setupRequiredMessage = Craft::t('sprout-reports-categories', 'This report requires a Channel or Structure section using Categories. Please update your settings to include at least one Channel or Structure and at least one Category Group with Categories available to assign to that section.');
         }
 
-        return Craft::$app->getView()->renderTemplate('sprout-reports-categories/datasources/_settings/categories', [
+        return Craft::$app->getView()->renderTemplate('sprout-reports-categories/_integrations/sproutreports/datasources/Categories/settings', [
             'settings' => count($settings) ? $settings : $this->report->getSettings(),
             'sectionSettings' => $sectionSettings,
             'categoryGroupSettings' => $categoryGroupSettings,
