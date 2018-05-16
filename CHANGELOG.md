@@ -1,6 +1,6 @@
 # Sprout Reports - Categories Changelog
 
-## 1.0.12- 2018-05-15
+## 1.0.2- 2018-05-15
 
 ### Changed
 - Updated Reports to use Report Element
