@@ -1,7 +1,7 @@
 {
     "name": "barrelstrength/sprout-reports-categories",
     "description": "A collection of Category-related Data Sources for Sprout Reports",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "type": "craft-plugin",
     "keywords": [
         "craft",
@@ -34,7 +34,7 @@
         }
     },
     "extra": {
-        "name": "Sprout Reports - Categories",
+        "name": "Categories Data Source for Sprout Reports",
         "handle": "sprout-reports-categories",
         "developer": "Barrel Strength",
         "developerUrl": "https://barrelstrengthdesign.com",
