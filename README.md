@@ -1,4 +1,4 @@
-# Sprout Reports - Categories
+# Categories Data Source for Sprout Reports
 
 A collection of Category-related Data Sources for Sprout Reports.
 
