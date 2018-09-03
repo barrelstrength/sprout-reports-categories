@@ -64,7 +64,7 @@ class Categories extends DataSource
 
         $query = new Query();
         $entries = $query
-            ->select("content.title AS 'Category Name',
+            ->select("(content.title) AS 'Category Name',
             COUNT(relations.sourceId) AS 'Total Entries Assigned Category',
             (COUNT(relations.sourceId) / $totalCategories) * 100 AS '% of Total Categories used'
             ")
