@@ -2,8 +2,8 @@
 
 namespace barrelstrength\sproutreportscategories\integrations\sproutreports\datasources;
 
-use barrelstrength\sproutbase\app\reports\base\DataSource;
-use barrelstrength\sproutbase\app\reports\elements\Report;
+use barrelstrength\sproutbasereports\base\DataSource;
+use barrelstrength\sproutbasereports\elements\Report;
 use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
@@ -14,7 +14,7 @@ class Categories extends DataSource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return Craft::t('sprout-reports-categories', 'Category Usage by Section');
     }
@@ -22,7 +22,7 @@ class Categories extends DataSource
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return Craft::t('sprout-reports-categories', 'Returns a breakdown of Categories used by Entries.');
     }
@@ -33,7 +33,7 @@ class Categories extends DataSource
      *
      * @return array
      */
-    public function getResults(Report $report, array $settings = [])
+    public function getResults(Report $report, array $settings = []): array
     {
         $reportSettings = $report->getSettings();
 
@@ -137,7 +137,7 @@ class Categories extends DataSource
      *
      * @return bool
      */
-    public function validateSettings(array $settings = [], array &$errors)
+    public function validateSettings(array $settings = [], array &$errors = []): bool
     {
         if (empty($settings['sectionId'])) {
             $errors['sectionId'][] = Craft::t('sprout-reports-categories', 'Section is required.');

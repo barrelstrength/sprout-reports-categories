@@ -10,7 +10,7 @@
 
 namespace barrelstrength\sproutreportscategories;
 
-use barrelstrength\sproutbase\app\reports\services\DataSources;
+use barrelstrength\sproutbasereports\services\DataSources;
 use barrelstrength\sproutreportscategories\integrations\sproutreports\datasources\Categories;
 use craft\base\Plugin;
 use yii\base\Event;
@@ -22,6 +22,16 @@ class SproutReportsCategories extends Plugin
      * @var string
      */
     public $schemaVersion = '1.0.0';
+
+    /**
+     * @var bool
+     */
+    public $hasCpSection = false;
+
+    /**
+     * @var bool
+     */
+    public $hasCpSettings = false;
 
     public function init()
     {

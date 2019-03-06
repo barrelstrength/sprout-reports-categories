@@ -4,15 +4,17 @@ namespace barrelstrength\sproutreportscategories\migrations;
 
 use craft\db\Migration;
 use craft\db\Query;
-use barrelstrength\sproutbase\app\reports\migrations\m180307_042132_craft3_schema_changes as SproutReportsCraft2toCraft3Migration;
+use barrelstrength\sproutbasereports\migrations\m180307_042132_craft3_schema_changes as SproutReportsCraft2toCraft3Migration;
 
 /**
  * Install migration.
  */
 class Install extends Migration
 {
+
     /**
-     * @inheritdoc
+     * @return bool
+     * @throws \yii\base\NotSupportedException
      */
     public function safeUp()
     {
