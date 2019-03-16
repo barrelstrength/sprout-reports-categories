@@ -1,5 +1,14 @@
 # Categories Data Source for Sprout Reports Changelog
 
+## 1.1.2 - 2019-03-15
+
+### Fixed
+
+- Updated Return Type hints to match base Data Source class ([#46][#46reports])
+- Fixed syntax error in Category Relations query
+
+[#46reports]: https://github.com/barrelstrength/craft-sprout-reports/issues/46
+
 ## 1.0.6 - 2018-08-01
 
 ## Changed
