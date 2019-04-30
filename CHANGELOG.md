@@ -1,5 +1,10 @@
 # Categories Data Source for Sprout Reports Changelog
 
+## 1.1.3 - 2019-04-30
+
+## Changed
+- Updated icon
+
 ## 1.1.2 - 2019-03-15
 
 ### Fixed
