@@ -8,6 +8,8 @@ use craft\records\Category as CategoryRecord;
 use craft\records\Entry as EntryRecord;
 use craft\db\Query;
 use Craft;
+use Twig_Error_Loader;
+use yii\base\Exception;
 
 class Categories extends DataSource
 {
@@ -83,8 +85,8 @@ class Categories extends DataSource
      * @param array $settings
      *
      * @return null|string
-     * @throws \Twig_Error_Loader
-     * @throws \yii\base\Exception
+     * @throws Twig_Error_Loader
+     * @throws Exception
      */
     public function getSettingsHtml(array $settings = [])
     {
