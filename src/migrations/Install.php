@@ -2,6 +2,8 @@
 
 namespace barrelstrength\sproutreportscategories\migrations;
 
+use barrelstrength\sproutbasereports\records\DataSource as DataSourceRecord;
+use barrelstrength\sproutbasereports\records\Report as ReportRecord;
 use craft\db\Migration;
 use craft\db\Query;
 use barrelstrength\sproutbasereports\migrations\m180307_042132_craft3_schema_changes as SproutReportsCraft2toCraft3Migration;
@@ -34,30 +36,30 @@ class Install extends Migration
 
         // See if our old data source exists
         $dataSource = $query->select('*')
-            ->from(['{{%sproutreports_datasources}}'])
+            ->from([DataSourceRecord::tableName()])
             ->where(['type' => $oldDataSourceId])
             ->one();
 
         if ($dataSource === null) {
             // If not, see if our new Data Source exists
             $dataSource = $query->select('*')
-                ->from(['{{%sproutreports_datasources}}'])
+                ->from([DataSourceRecord::tableName()])
                 ->where(['type' => $dataSourceClass])
                 ->one();
         }
 
         // If we don't have a Data Source record, no need to do anything
         if ($dataSource === null) {
-            $this->insert('{{%sproutreports_datasources}}', [
+            $this->insert(DataSourceRecord::tableName(), [
                 'type' => $dataSourceClass,
                 'allowNew' => 1
             ]);
-            $dataSource['id'] = $this->db->getLastInsertID('{{%sproutreports_datasources}}');
+            $dataSource['id'] = $this->db->getLastInsertID(DataSourceRecord::tableName());
             $dataSource['allowNew'] = 1;
         }
 
         // Update our existing or new Data Source
-        $this->update('{{%sproutreports_datasources}}', [
+        $this->update(DataSourceRecord::tableName(), [
             'type' => $dataSourceClass,
             'allowNew' => $dataSource['allowNew'] ?? 1
         ], [
@@ -65,7 +67,7 @@ class Install extends Migration
         ], [], false);
 
         // Update any related dataSourceIds in our Reports table
-        $this->update('{{%sproutreports_reports}}', [
+        $this->update(ReportRecord::tableName(), [
             'dataSourceId' => $dataSource['id']
         ], [
             'dataSourceId' => $oldDataSourceId
